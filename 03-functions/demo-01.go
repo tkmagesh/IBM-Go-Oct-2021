@@ -14,6 +14,7 @@ func main() {
 
 	quotient, _ := divide(100, 7)
 	fmt.Println(quotient)
+	print("Hello there!")
 }
 
 /*
@@ -64,4 +65,8 @@ func divide(x, y int) (quotient int, remainder int) {
 	quotient = x / y
 	remainder = x % y
 	return
+}
+
+func print(s string) {
+	fmt.Println(s)
 }

@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+//package level unused variable - allowed
+var z int = 200
+
 func main() {
 	/*
 		var msg string
@@ -77,4 +80,52 @@ func main() {
 	result := x + y
 
 	fmt.Println(message, result)
+
+	//Constants
+	const z = 100
+	//z = 200
+	fmt.Println(z)
+
+	//iota (represents integer values from 0)
+	/*
+		const (
+			red   = iota
+			green = iota
+			blue  = iota
+		)
+
+		const (
+			pen    = iota
+			pencil = iota
+			marker = iota
+		)
+		fmt.Println(red, green, blue)
+		fmt.Println(pen, pencil, marker)
+	*/
+
+	/*
+		const (
+			red = iota
+			green
+			blue
+		)
+	*/
+	/*
+		const (
+			red = iota + 1
+			green
+			blue
+		)
+	*/
+
+	const (
+		red = iota + 1
+		green
+		_
+		_
+		blue
+	)
+
+	fmt.Println(red, green, blue)
+
 }

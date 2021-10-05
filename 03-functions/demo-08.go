@@ -15,9 +15,11 @@ func f1() (result int) {
 		fmt.Println("[@f1] Deferred - 1")
 		result = 500
 	}()
-	defer func() {
+	/* defer func() {
 		fmt.Println("[@f1] Deferred - 2")
-	}()
+	}() */
+	defer fmt.Println("[@f1] Deferred - 2")
+
 	defer func() {
 		fmt.Println("[@f1] Deferred - 3")
 		result = 200

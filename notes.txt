@@ -1,0 +1,13 @@
+Schedule :
+    Commence    : 09:30 Hrs
+    Tea Break   : 11:00 Hrs (20 mins)
+    Lunch Break : 13:00 Hrs (1 Hr)
+    Tea Break   : 15:30 Hrs (20 mins)
+    Wind up     : 17:30 Hrs
+
+Methodology:
+    No powerpoints
+    100% hands on driven
+    Not targetted for information sharing
+    Guided practice
+    Minimum 50% of the participants should have completed the assignment

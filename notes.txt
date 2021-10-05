@@ -1,3 +1,5 @@
+Magesh Kuppan
+
 Schedule :
     Commence    : 09:30 Hrs
     Tea Break   : 11:00 Hrs (20 mins)
@@ -11,3 +13,77 @@ Methodology:
     Not targetted for information sharing
     Guided practice
     Minimum 50% of the participants should have completed the assignment
+
+About You
+    Name
+    Total Experience
+    Core Expertise / Primary skillset
+    Experience in Go (if any)
+
+
+Why Go?
+    1. Easy Concurrency
+    2. Easy Unit Testing
+    3. Compiled
+
+    1. Simplicity
+        25 keywords
+        - No access modifiers
+        - No exceptions (ONLY Errors)
+        - No classes (ONLY structs & functions)
+        - No inheritance (ONLY composition)
+
+    2. Ease of Concurrency
+        - Built for concurrency
+            Builtin Scheduler
+            1000s of goroutines can be scheduled in 1 OS thread
+            Language features
+                go, chan, <- channel operator, select, range
+
+    3. Tooling support
+        compiler
+            1 executable
+                Go scheduler + Garbage Collector
+        package management
+        
+
+Barry Schwartz
+    "Paradox of Choice" - TED Talk
+
+
+Tools
+    1. Visual Studio Code (http://code.visualstudio.com/)
+    2. Go tools (http://www.golang.org)
+
+To run a go program
+    go run <filename>
+
+To create a build
+    go build <filename>
+    go build -o hw hello-world.go 
+
+
+Data Types in Go
+    bool
+    string
+
+    int
+    int8
+    int16
+    int32
+    int64
+
+    uint
+    uint8
+    uint16
+    uint32
+    uint64
+
+    float32
+    float64
+
+    complex64(real float32 + imaginary float32)
+    complex128(real float64 + imaginary float64)
+
+    byte(alias for uint8)
+    rune(alias for int32) (represents Unicode code point (unicode character))

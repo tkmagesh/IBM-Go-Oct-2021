@@ -92,3 +92,6 @@ Programming constructs
     if
     switch
     for
+
+functions
+    1. variadic functions

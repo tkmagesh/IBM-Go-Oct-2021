@@ -95,3 +95,7 @@ Programming constructs
 
 functions
     1. variadic functions
+    2. Higher order functions
+        a. functions can be assigned to variables
+        b. functions can be passed as arguments to other functions
+        c. functions can be returned by other functions

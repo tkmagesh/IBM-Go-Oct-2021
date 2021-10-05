@@ -122,7 +122,6 @@ func main() {
 		red = iota + 1
 		green
 		_
-		_
 		blue
 	)
 

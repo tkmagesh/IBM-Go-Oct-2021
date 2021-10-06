@@ -32,6 +32,10 @@ func main() {
 
 	var ptrProduct = &product
 	fmt.Println(ptrProduct.Name)
+
+	product2 := Product{Id: 100, Cost: 5, Units: 10, Name: "Pen"}
+	product3 := Product{Id: 100, Cost: 5, Units: 10, Name: "Pen"}
+	fmt.Println(product2 == product3)
 }
 
 func applyDiscount(product *Product, discount float64) {

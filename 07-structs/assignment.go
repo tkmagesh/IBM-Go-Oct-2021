@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type Product struct {
 	Id       int
 	Name     string
@@ -9,6 +11,7 @@ type Product struct {
 }
 
 func main() {
+	marker := Product{103, "Marker", 50, 20, "Utencil"}
 	products := []Product{
 		Product{105, "Pen", 5, 50, "Stationary"},
 		Product{107, "Pencil", 2, 100, "Stationary"},
@@ -17,6 +20,43 @@ func main() {
 		Product{101, "Kettle", 2500, 10, "Utencil"},
 		Product{104, "Scribble Pad", 20, 20, "Stationary"},
 	}
+
+	fmt.Println("Index of Marker = ", IndexOf(products, marker))
+
+	costlyProductPredicate := func(product Product) bool {
+		return product.Cost > 1000
+	}
+
+	costlyProducts := Filter(products, costlyProductPredicate)
+	fmt.Println(costlyProducts)
+}
+
+func IndexOf(products []Product, product Product) int {
+	for idx, p := range products {
+		if p == product {
+			return idx
+		}
+	}
+	return -1
+}
+
+func Includes(products []Product, product Product) bool {
+	for _, p := range products {
+		if p == product {
+			return true
+		}
+	}
+	return false
+}
+
+func Filter(products []Product, predicate func(Product) bool) []Product {
+	var result []Product
+	for _, p := range products {
+		if predicate(p) {
+			result = append(result, p)
+		}
+	}
+	return result
 }
 
 /*

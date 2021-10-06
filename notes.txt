@@ -112,4 +112,6 @@ complex types
     1. Array
         A fixed size collection of values of the same type
     2. Slice
+        A dynamically sized collection of values of the same type
+        A pointer to an array
     3. Map

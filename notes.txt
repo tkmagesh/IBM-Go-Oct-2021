@@ -107,3 +107,9 @@ panic and recover
         the application cannot proceed further
     recover
         - used to handle errors
+
+complex types
+    1. Array
+        A fixed size collection of values of the same type
+    2. Slice
+    3. Map

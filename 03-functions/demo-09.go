@@ -24,6 +24,7 @@ func divide(x, y int) (result int, err error) {
 		if er := recover(); er != nil {
 			fmt.Println("[@divide] Error:", er)
 			err = errors.New("Cannot divide by zero!")
+			//can i panic from here?
 		}
 	}()
 	if y == 0 {

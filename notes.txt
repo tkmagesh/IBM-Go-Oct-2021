@@ -144,6 +144,14 @@ go.mod
     list of dependencies (references)
         by default, the code of the dependencies is maintained in the $GOPATH/pkg folder
         to localize the code of the dependencies, use the "vendor" folder
+            go mod vendor
 
 to create a module
     go mod init <module-name>
+
+to install a third party package
+    go get <package-name>
+    go get github.com/fatih/color
+
+To update a third party package
+    go get -u <package-name>

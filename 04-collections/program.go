@@ -70,7 +70,9 @@ func main() {
 	fmt.Printf("randomNos = %v, len() = %d, cap() = %d\n", randomNos, len(randomNos), cap(randomNos))
 
 	fmt.Println("Copy of a slice")
-	var newRandomNos []int = randomNos
+	//var newRandomNos []int = randomNos
+	var newRandomNos = make([]int, len(randomNos))
+	copy(newRandomNos, randomNos)
 	//var newRandomNos []int = randomNos[:]
 	fmt.Printf("randomNos = %v, newRandomNos = %v\n", randomNos, newRandomNos)
 
@@ -92,4 +94,40 @@ func main() {
 	fmt.Println("randomNos[2:5] = ", randomNos[2:5])
 	fmt.Println("randomNos[2:] = ", randomNos[2:])
 	fmt.Println("randomNos[:5] = ", randomNos[:5])
+
+	//Maps
+	fmt.Println("Maps")
+	var cityRanks map[string]int = map[string]int{
+		"Bengaluru": 4,
+		"Udupi":     1,
+		"Mangaluru": 2,
+		"Mysuru":    3,
+	}
+	fmt.Println("cityRanks = ", cityRanks)
+	fmt.Println("cityRanks[\"Bengaluru\"] = ", cityRanks["Bengaluru"])
+
+	//appending a value to a map
+	fmt.Println("Appending a value to a map")
+	cityRanks["Pune"] = 5
+	fmt.Println("cityRanks = ", cityRanks)
+
+	//checking if a key exists
+	fmt.Println("Checking if a key exists")
+	if value, exists := cityRanks["Kochi"]; exists {
+		fmt.Println("cityRanks[\"Kochi\"] = ", value)
+	} else {
+		fmt.Println("cityRanks[\"Kochi\"] does not exist")
+	}
+
+	//removing a key from a map
+	fmt.Println("Removing a key from a map")
+	delete(cityRanks, "Pune")
+	fmt.Println("cityRanks = ", cityRanks)
+
+	//Iterating over a map
+	fmt.Println("Iterating over a map")
+	for city, rank := range cityRanks {
+		fmt.Printf("city = %s, rank = %d\n", city, rank)
+	}
+
 }

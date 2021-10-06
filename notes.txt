@@ -115,3 +115,5 @@ complex types
         A dynamically sized collection of values of the same type
         A pointer to an array
     3. Map
+        A typed collection of key-value pairs
+        

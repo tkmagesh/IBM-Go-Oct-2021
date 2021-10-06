@@ -101,3 +101,9 @@ functions
         c. functions can be returned by other functions
     3. Closures
     4. deferred functions
+
+panic and recover
+    panic
+        the application cannot proceed further
+    recover
+        - used to handle errors

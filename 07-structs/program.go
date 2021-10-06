@@ -27,10 +27,14 @@ func main() {
 	product := Product{Id: 100, Cost: 5, Units: 10, Name: "Pen"}
 	fmt.Printf("%#v\n", product)
 	fmt.Println("After applying 10% discount")
-	applyDiscount( /*  */ )
+	applyDiscount(&product, 0.1)
 	fmt.Printf("%#v\n", product)
+
+	var ptrProduct = &product
+	fmt.Println(ptrProduct.Name)
 }
 
-func applyDiscount( /* product, discount percentage */ ) {
-
+func applyDiscount(product *Product, discount float64) {
+	//(*product).Cost = (*product).Cost - ((*product).Cost * discount)
+	product.Cost = product.Cost * (1 - discount)
 }

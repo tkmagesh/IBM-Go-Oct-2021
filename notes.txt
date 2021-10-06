@@ -117,3 +117,33 @@ complex types
     3. Map
         A typed collection of key-value pairs
         
+
+Pointer
+    Pointer arithmetic is not supported
+
+Modularity
+    Modules ( >= go 1.13)
+    Packages
+
+
+$GOPATH
+    bin
+    pkg
+    src
+        github.com
+            tkmagesh
+                app1
+                    pk1
+                        .go
+                    pk2
+                        .go
+
+go.mod
+    go runtime version
+    name of the module
+    list of dependencies (references)
+        by default, the code of the dependencies is maintained in the $GOPATH/pkg folder
+        to localize the code of the dependencies, use the "vendor" folder
+
+to create a module
+    go mod init <module-name>

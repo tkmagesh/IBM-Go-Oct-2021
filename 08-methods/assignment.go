@@ -10,9 +10,11 @@ type Product struct {
 	Category string
 }
 
+type Products []Product
+
 func main() {
 	marker := Product{103, "Marker", 50, 20, "Utencil"}
-	products := []Product{
+	products := Products{
 		Product{105, "Pen", 5, 50, "Stationary"},
 		Product{107, "Pencil", 2, 100, "Stationary"},
 		Product{103, "Marker", 50, 20, "Utencil"},
@@ -51,7 +53,7 @@ func (product Product) Format() string {
 	return fmt.Sprintf("Id = %d, Name = %s, Cost = %f, Units = %d, Category = %s", product.Id, product.Name, product.Cost, product.Units, product.Category)
 }
 
-func FormatProducts(products []Product) string {
+func (products Products) Format() string {
 	var result string
 	for _, p := range products {
 		result += fmt.Sprintf("%v\n", p.Format())
@@ -59,7 +61,7 @@ func FormatProducts(products []Product) string {
 	return result
 }
 
-func IndexOf(products []Product, product Product) int {
+func (products Products) IndexOf(product Product) int {
 	for idx, p := range products {
 		if p == product {
 			return idx
@@ -68,7 +70,7 @@ func IndexOf(products []Product, product Product) int {
 	return -1
 }
 
-func Includes(products []Product, product Product) bool {
+func (products Products) Includes(product Product) bool {
 	for _, p := range products {
 		if p == product {
 			return true
@@ -77,14 +79,32 @@ func Includes(products []Product, product Product) bool {
 	return false
 }
 
-func Filter(products []Product, predicate func(Product) bool) []Product {
-	var result []Product
+func (products Products) Filter(predicate func(Product) bool) Products {
+	var result Products
 	for _, p := range products {
 		if predicate(p) {
 			result = append(result, p)
 		}
 	}
 	return result
+}
+
+func (products Products) All(predicate func(Product) bool) bool {
+	for _, p := range products {
+		if !predicate(p) {
+			return false
+		}
+	}
+	return true
+}
+
+func (products Products) Any(predicate func(Product) bool) bool {
+	for _, p := range products {
+		if predicate(p) {
+			return true
+		}
+	}
+	return false
 }
 
 /*

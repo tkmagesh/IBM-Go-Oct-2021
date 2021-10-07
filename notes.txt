@@ -155,3 +155,9 @@ to install a third party package
 
 To update a third party package
     go get -u <package-name>
+
+
+interfaces
+    implement "Sort" api for the Products
+        Sort by id / name / cost / units / category
+        IMPORTANT : use sort.Sort()

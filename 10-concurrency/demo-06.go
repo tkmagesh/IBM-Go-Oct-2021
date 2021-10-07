@@ -11,10 +11,10 @@ func main() {
 	wg.Add(1)
 	go add(100, 200, wg, ch)
 	//Reading data from the channel
-	//wg.Wait()
+	wg.Wait()
 	result := <-ch
 	fmt.Println(result)
-	wg.Wait()
+	//wg.Wait()
 	fmt.Println("exiting main")
 }
 

@@ -5,13 +5,8 @@ import "fmt"
 //package level unused variable - allowed
 var z int = 200
 
-type X struct {
-	y int
-}
-
 func main() {
 
-	const o = X{y: 100}
 	/*
 		var msg string
 		msg = "Hello, World!"

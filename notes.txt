@@ -170,3 +170,5 @@ Goroutines
 
     To detect race conditions
         go run --race <file.go>
+
+    Dont Communicate by sharing memory, instead share memory for communication

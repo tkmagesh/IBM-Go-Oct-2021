@@ -172,3 +172,10 @@ Goroutines
         go run --race <file.go>
 
     Dont Communicate by sharing memory, instead share memory for communication
+
+    Unbuffered channel
+        A write operation can succeed ONLY if a read operation on the channel is already initiated
+
+    Buffered channel
+        Data can be written into the channel even when a read operation is not yet initiated.
+        The number of data that can be written into the channel is limited by the capacity of the channel.

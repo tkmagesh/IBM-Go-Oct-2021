@@ -12,24 +12,22 @@ func main() {
 		aggregate the intermediate result
 		print the final result
 	*/
+
 	ch1 := make(chan int)
 	ch2 := make(chan int)
 	dataset1 := data[:len(data)/2]
 	dataset2 := data[len(data)/2:]
-	go func(ch chan int, data []int) {
-		ch <- sum(data...)
-	}(ch1, dataset1)
-	go func(ch chan int, data []int) {
-		ch <- sum(data...)
-	}(ch2, dataset2)
+	go sum(ch1, dataset1...)
+	go sum(ch2, dataset2...)
 	result := <-ch1 + <-ch2
 	fmt.Println(result)
+
 }
 
-func sum(nos ...int) int {
+func sum(ch chan int, nos ...int) {
 	total := 0
 	for _, v := range nos {
 		total += v
 	}
-	return total
+	ch <- total
 }

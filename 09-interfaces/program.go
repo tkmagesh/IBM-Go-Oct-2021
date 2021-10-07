@@ -30,12 +30,23 @@ func main() {
 	c := Circle{5}
 	//fmt.Println("Area : ", c.Area())
 	PrintArea(c)
+	PrintPerimeter(c)
 
 	r := Rectangle{5, 10}
 	//fmt.Println("Area : ", r.Area())
 	PrintArea(r)
+	PrintPerimeter(r)
 }
 
 func PrintArea(x ShapeWithArea) {
 	fmt.Println("Area : ", x.Area())
 }
+
+func PrintPerimeter(x /*  */) {
+	fmt.Println("Perimeter : ", x.Perimeter())
+}
+
+/*
+circle perimeter = 2πr
+rectangle perimeter = 2(h+w)
+*/

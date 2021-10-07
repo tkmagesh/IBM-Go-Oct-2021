@@ -2,26 +2,29 @@ package main
 
 import (
 	"fmt"
+	"sync"
 	"time"
 )
 
 func main() {
+	wg := &sync.WaitGroup{}
 	ch1 := make(chan string)
 	ch2 := make(chan string)
-	go print("Hello", ch1, ch2)
-	go print("World", ch2, ch1)
+	wg.Add(2)
+	go print("Hello", ch1, ch2, wg)
+	go print("World", ch2, ch1, wg)
 	ch1 <- "start"
-	var input string
-	fmt.Scanln(&input)
+	wg.Wait()
 }
 
-func print(s string, in, out chan string) {
+func print(s string, in, out chan string, wg *sync.WaitGroup) {
 	for i := 0; i < 5; i++ {
 		<-in
 		time.Sleep(500 * time.Millisecond)
 		fmt.Println(s)
-		out <- "done"
+		out <- "done" /* TODO : Fix this */
 	}
+	wg.Done()
 }
 
 /*

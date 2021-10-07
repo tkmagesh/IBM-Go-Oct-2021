@@ -164,3 +164,9 @@ interfaces
     implement "Sort" api for the Products
         Sort by id / name / cost / units / category
         IMPORTANT : use sort.Sort()
+
+
+Goroutines
+
+    To detect race conditions
+        go run --race <file.go>

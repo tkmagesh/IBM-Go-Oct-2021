@@ -38,7 +38,10 @@ Why Go?
             Builtin Scheduler
             1000s of goroutines can be scheduled in 1 OS thread
             Language features
-                go, chan, <- channel operator, select, range
+                go, chan, <- (channel operator), select, range
+
+            OS Thread (8 MB)
+            Goroutine (4 KB)
 
     3. Tooling support
         compiler

@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"grpc-app/proto"
 	"io"
 	"log"
@@ -21,7 +22,73 @@ func main() {
 	//Add operation
 	//doRequestResponse(clientConn, ctx)
 	//doClientStreaming(clientConn, ctx)
-	doServerStreaming(clientConn, ctx)
+	//doServerStreaming(clientConn, ctx)
+	doBiDirectionalStreaming(clientConn, ctx)
+}
+
+func doBiDirectionalStreaming(client proto.AppServiceClient, ctx context.Context) {
+	stream, err := client.Greet(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	requestData := []*proto.GreetRequest{
+		&proto.GreetRequest{
+			Greeting: &proto.Greeting{
+				FirstName: "Magesh",
+				LastName:  "Kuppan",
+			},
+		},
+		&proto.GreetRequest{
+			Greeting: &proto.Greeting{
+				FirstName: "Suresh",
+				LastName:  "Kannan",
+			},
+		},
+		&proto.GreetRequest{
+			Greeting: &proto.Greeting{
+				FirstName: "Ramesh",
+				LastName:  "Jayaraman",
+			},
+		},
+		&proto.GreetRequest{
+			Greeting: &proto.Greeting{
+				FirstName: "Rajesh",
+				LastName:  "Pandit",
+			},
+		},
+		&proto.GreetRequest{
+			Greeting: &proto.Greeting{
+				FirstName: "Naresh",
+				LastName:  "Kumar",
+			},
+		},
+	}
+
+	go func() {
+		for _, req := range requestData {
+			stream.Send(req)
+		}
+		stream.CloseSend()
+	}()
+	/* wg := &sync.WaitGroup{}
+	wg.Add(1) */
+	done := make(chan bool)
+	go func() {
+		for {
+			res, err := stream.Recv()
+			if err == io.EOF {
+				fmt.Println("Thats all folks!")
+				break
+			}
+			if err != nil {
+				log.Fatalln(err)
+			}
+			log.Println("Greet Result:", res.GetGreetMessage())
+		}
+		//done <- true
+		close(done)
+	}()
+	<-done
 }
 
 func doServerStreaming(clientConn proto.AppServiceClient, ctx context.Context) {

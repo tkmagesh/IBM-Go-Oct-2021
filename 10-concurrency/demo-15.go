@@ -11,24 +11,21 @@ Modify the program in such a way that the program keeps generating the fibonacci
 
 func main() {
 	ch := make(chan int)
-	go fibonacci(ch)
+	done := make(chan string)
+	go fibonacci(ch, done)
+	go func() {
+		var input string
+		fmt.Scanln(&input)
+		done <- "done"
+	}()
 	for no := range ch {
 		fmt.Println(no)
 	}
 }
 
-func fibonacci(ch chan int) {
+func fibonacci(ch chan int, done chan string) {
 	defer close(ch)
 	x, y := 0, 1
-	done := time.After(15 * time.Second)
-	/* done := func() chan string {
-		ch := make(chan string)
-		go func() {
-			time.Sleep(15 * time.Second)
-			ch <- "done"
-		}()
-		return ch
-	}() */
 	for {
 		select {
 		case ch <- x:

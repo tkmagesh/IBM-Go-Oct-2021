@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"grpc-app/proto"
+	"io"
 	"log"
 	"time"
 
@@ -19,8 +20,30 @@ func main() {
 
 	//Add operation
 	//doRequestResponse(clientConn, ctx)
-	doClientStreaming(clientConn, ctx)
+	//doClientStreaming(clientConn, ctx)
+	doServerStreaming(clientConn, ctx)
+}
 
+func doServerStreaming(clientConn proto.AppServiceClient, ctx context.Context) {
+	req := &proto.PrimeRequest{
+		Start: 5,
+		End:   100,
+	}
+	stream, err := clientConn.GeneratePrime(ctx, req)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	for {
+		res, err := stream.Recv()
+		if err == io.EOF {
+			log.Println("All prime numbers received")
+			return
+		}
+		if err != nil {
+			log.Fatalln(err)
+		}
+		log.Println("Prime number: ", res.GetNo())
+	}
 }
 
 func doClientStreaming(clientConn proto.AppServiceClient, ctx context.Context) {

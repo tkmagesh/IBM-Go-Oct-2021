@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net"
+	"time"
 
 	"google.golang.org/grpc"
 )
@@ -46,6 +47,35 @@ func (s *server) Average(stream proto.AppService_AverageServer) error {
 		count++
 	}
 	return nil
+}
+
+func (s *server) GeneratePrime(req *proto.PrimeRequest, stream proto.AppService_GeneratePrimeServer) error {
+	start := req.GetStart()
+	end := req.GetEnd()
+	log.Printf("[server] GeneratePrime request received from %d to %d\n", start, end)
+	for i := start; i <= end; i++ {
+		if isPrime(i) {
+			time.Sleep(time.Millisecond * 500)
+			log.Printf("Sending %d\n", i)
+			res := &proto.PrimeResponse{
+				No: i,
+			}
+			stream.Send(res)
+		}
+	}
+	return nil
+}
+
+func isPrime(no int32) bool {
+	if no < 2 {
+		return false
+	}
+	for i := int32(2); i <= (no / 2); i++ {
+		if no%i == 0 {
+			return false
+		}
+	}
+	return true
 }
 
 func main() {

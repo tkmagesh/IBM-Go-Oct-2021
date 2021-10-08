@@ -179,3 +179,19 @@ Goroutines
     Buffered channel
         Data can be written into the channel even when a read operation is not yet initiated.
         The number of data that can be written into the channel is limited by the capacity of the channel.
+
+io
+    io package
+        base interfaces
+            Reader
+            Writer
+            Closer
+            Seeker
+    ioutil
+        read file
+        write file
+    bufio
+        buffered reading and writing
+    os
+        file operations
+            create, deleting etc

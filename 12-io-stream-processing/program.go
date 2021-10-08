@@ -86,6 +86,10 @@ func Merger(resultFile string, evenSumCh chan int, oddSumCh chan int, wg *sync.W
 		file.Close()
 		wg.Done()
 	}()
+	/*
+		file.WriteString(fmt.Sprintf("Even total : %d\n", <-evenSumCh))
+		file.WriteString(fmt.Sprintf("Odd total : %d\n", <-oddSumCh))
+	*/
 	for idx := 0; idx < 2; idx++ {
 		select {
 		case evenSum := <-evenSumCh:

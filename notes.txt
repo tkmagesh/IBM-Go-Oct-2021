@@ -195,3 +195,62 @@ io
     os
         file operations
             create, deleting etc
+
+
+GRPC
+
+    Interprocess communication
+        .NET Remoting
+        RMI (java)
+
+    CORBA
+        Common Object Request Broker Architecture
+
+    Web
+        IP
+        TCP
+        HTTP
+        XML
+
+        Web Service
+        SOAP (Simple Object Access Protocal)
+        WSDL (Web Service Description Language)
+
+        Data as Resource (REST)
+            URL -> What?
+            HTTP Verb -> How?
+            HTTP Status Code
+
+        Data is represented in Text
+        HTTP is stateless
+
+    gRPC
+        HTTP2
+            binary serialization
+            stateful connections
+
+            communication patterns supported
+                Request & Response
+                Client Streaming (stream of requests and 1 response)
+                Server Streaming (1 request and stream of responses)
+                Bi-directional Streaming (stream of requests and responses)
+
+        protocol buffers
+
+P101,Pen,10,100,Stationary
+P102,Pencil,5,50,Stationary
+
+actual payload : 54
+payload in XML : 246
+payload in JSON : 174
+
+Tools
+    For mac
+        brew install protobuf
+        brew install protoc-gen-go
+        brew install protoc-gen-go-grpc
+
+    For windows
+        Download https://github.com/protocolbuffers/protobuf/releases/download/v3.18.0/protoc-3.18.0-win64.zip
+        Extract it in a folder
+        Add the folder the PATH environment variable

@@ -15,7 +15,22 @@ message AddResponse{
     int32 result = 1;
 }
 
+//Client Streaming
+message AverageRequest{
+    int32 no = 1;
+}
+
+message AverageResponse{
+    int32 result = 1;
+}
+
+
 //Service
 service AppService{
+
+    //Request & Response
     rpc Add(AddRequest) returns (AddResponse);
+
+    //Client Streaming
+    rpc Average(stream AverageRequest) returns (AverageResponse);
 }

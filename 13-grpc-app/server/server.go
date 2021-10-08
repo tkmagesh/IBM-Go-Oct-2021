@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"grpc-app/proto"
+	"io"
 	"log"
 	"net"
 
@@ -22,6 +23,29 @@ func (s *server) Add(ctx context.Context, req *proto.AddRequest) (*proto.AddResp
 		Result: result,
 	}
 	return response, nil
+}
+
+func (s *server) Average(stream proto.AppService_AverageServer) error {
+	var sum int32
+	var count int32
+	for {
+		req, err := stream.Recv()
+		if err == io.EOF {
+			res := &proto.AverageResponse{
+				Result: sum / count,
+			}
+			log.Printf("[Average] Sending response")
+			stream.SendAndClose(res)
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+		log.Printf("[Average] received %d\n", req.GetNo())
+		sum += req.GetNo()
+		count++
+	}
+	return nil
 }
 
 func main() {

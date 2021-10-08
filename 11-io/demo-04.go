@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"os"
 )
@@ -32,5 +34,7 @@ func main() {
 		log.Fatalln(err)
 	}
 	alphaReader := AlphaReader{file}
-	io.Copy(os.Stdout, alphaReader)
+	//io.Copy(os.Stdout, alphaReader)
+	data, _ := ioutil.ReadAll(alphaReader)
+	fmt.Println(string(data))
 }

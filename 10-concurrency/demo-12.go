@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	ch := make(chan int, 2)
+	ch := make(chan int, 0)
 	go writeData(ch)
 	fmt.Println("[@main] attempting to read 10")
 	fmt.Println(<-ch)

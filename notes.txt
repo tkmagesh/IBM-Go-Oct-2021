@@ -254,3 +254,9 @@ Tools
         Download https://github.com/protocolbuffers/protobuf/releases/download/v3.18.0/protoc-3.18.0-win64.zip
         Extract it in a folder
         Add the folder the PATH environment variable
+
+    to test the installation
+        protoc --version
+        
+    to generate the proxy and the stub
+        protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative proto/service.proto

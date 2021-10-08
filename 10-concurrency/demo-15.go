@@ -5,6 +5,10 @@ import (
 	"time"
 )
 
+/*
+Modify the program in such a way that the program keeps generating the fibonacci numbers until the user hits "ENTER" key
+*/
+
 func main() {
 	ch := make(chan int)
 	go fibonacci(ch)
